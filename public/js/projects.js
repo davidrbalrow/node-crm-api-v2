@@ -1,28 +1,5 @@
-
-// $(function() {
-
- // }); //function
-
-
-jQuery('#message-form').on('submit',function(e) {
-  e.preventDefault();
-// var trHTML = '';
-// var data1 =[];
-//   jQuery.get("/project/all",function(data,status){
-//
-//     $.each(data, function (i, item) {
-//
-//            trHTML += '<tr><td>' + data[i].name + '</td><td>' + data[i].status + '</td></tr>';
-//            data1.push(data[i]);
-//        });
-//        jQuery('#location').append(trHTML);
-//
-//
-//        console.log(data);
-//
-//   });
-
-
+$(document).ready(function(){
+$('#projects').click(function(){
   $("#jsGrid").jsGrid({
       width: "100%",
       height: "400px",
@@ -31,6 +8,7 @@ jQuery('#message-form').on('submit',function(e) {
       editing: true,
       sorting: true,
       paging: true,
+      filtering: true,
       autoload: true,
 
       //data: data1,
@@ -40,7 +18,7 @@ jQuery('#message-form').on('submit',function(e) {
        return $.ajax({
            type: "GET",
            url: "/project/all",
-           data: filter,
+           data: JSON.stringify(filter),
            contentType:"application/json"
        });
 
@@ -81,8 +59,17 @@ jQuery('#message-form').on('submit',function(e) {
           { type: "control" }
       ]
   });//jsgrid
+});
 
 
-  });
+// navigation highlighting
 
-  
+$('#projects').mouseenter(function(){
+   $("#projects").css({"background":"#ecf0f1"});
+});
+$('#projects').mouseleave(function(){
+   $("#projects").css({"background":"#74b9ff"});
+});
+
+
+});

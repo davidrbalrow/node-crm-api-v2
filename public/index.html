@@ -6,19 +6,56 @@
 
 </head>
 
+
+
 <body>
 
-  <p>Welcome to CRM app</p>
 
-  <form id="message-form">
-    <button>Get Data</button>
-  </form>
+  <link type="text/css" rel="stylesheet" href="css/Grid.css" />
+  <link type="text/css" rel="stylesheet" href="css/index.css" />
+<
+
+<div class="grid-container">
+<div class="item1">
+  <div class="header"
+  <p>Welcome to CRM App</p>
+  </div>
+</div>
+<div class="item2">
+
+    <p><img src="/images/SVGs/search.svg" alt="HTML5 Icon" width="64" height="64"></p>
+    <p><img id="projects" src="/images/SVGs/list.svg" title="Projects" alt="HTML5 Icon" width="64" height="64"></p>
+    <p><img src="/images/SVGs/user.svg" alt="HTML5 Icon" width="64" height="64"></p>
+    <p><img src="/images/SVGs/chat.svg" alt="HTML5 Icon" width="64" height="64"></p>
+    <p><img src="/images/SVGs/pie-chart.svg" alt="HTML5 Icon" width="64" height="64"></p>
+
+</div>
+
+<div class ="item3">
+  <div class ="content">
+
+    <!--      <form id="message-form">
+          <button>Get Data</button>
+          </form>-->
+
+          <div id="Search"></div>
+          <div id="jsGrid"></div>
+
+    <div class="content">
+</div>
+
+</div>
 
 <script src="/js/libs/jquery-3.3.1.min.js"></script>
 <script src="/js/index.js"></script>
+<script src="/js/projects.js"></script>
 <link type="text/css" rel="stylesheet" href="js/libs/jsgrid/jsgrid.min.css" />
 <link type="text/css" rel="stylesheet" href="js/libs/jsgrid/jsgrid-theme.min.css" />
-<script type="text/javascript" src="js/libs/jsgrid/jsgrid.min.js"></script><!--
+<script type="text/javascript" src="js/libs/jsgrid/jsgrid.min.js"></script>
+
+
+
+<!--
 <table id="location" border='1'>
   <tr>
     <th>Name</th>
@@ -26,9 +63,6 @@
 </tr>
 </table>
 -->
-<div id="jsGrid"></div>
-
-
 </body>
 
 </html>

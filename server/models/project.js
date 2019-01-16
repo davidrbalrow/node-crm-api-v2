@@ -40,18 +40,43 @@ getAllItems() {
   });
 } //function
 
+filterItem(fields) {
+  console.log('getting items');
+  return new Promise(function(resolve,reject){
+    //  var query1 = `select name,status,bids, budget, to_char(release_dt,'%Y-%m-%d') from crm.projects`
+     //var query1 = 'select name,status,bids, budget, release_dt from crm.projects';
+
+    console.log('fields');
+      db.query('select name,status,bids, budget, release_dt from crm.projects').then(rows=>{
+        if (!rows){
+            console.log('!rows');
+          } else {
+            //console.log(rows);
+            resolve(rows);
+          }
+      }).catch((e)=>{
+
+        reject(e);
+      })
+
+  }).catch((e)=>{
+
+    return(e);
+  });
+} //function
+
 addItem(fields) {
 
   return new Promise(function(resolve,reject){
 
-      var query1 =`insert INTO crm.projects value ('${fields.name}','${fields.status}', ${fields.bids},${fields.budget},${release_dt})`;
-      var values = [fields.name,fields.status, 0,0,'2020-01-01'];
-
+      var query1 =`insert INTO crm.projects values ('${fields.name}','${fields.status}', ${fields.bids},${fields.budget},str_to_Date('${fields.release_dt}','%Y-%m-%d'))`;
+      console.log(query1);
       db.query(query1).then((rows)=>{
         if (!rows){
             console.log('rows');
           } else {
             console.log('item added');
+            console.log(rows);
             resolve(rows);
           }
       }).catch((e)=>{

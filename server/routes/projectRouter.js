@@ -26,6 +26,19 @@ projectRouter.get('/all',(req, res, next)=>{
     console.log('e',e);
     res.status(400).send(e);
   });
+});
+
+projectRouter.get('/filterItem',(req, res, next)=>{
+
+  var project = new Project();
+
+  project.filterItem(req.body).then((items)=>{
+  //  console.log(items[0]);
+    res.send(items);
+  }).catch((e)=>{
+    console.log('e',e);
+    res.status(400).send(e);
+  });
 
 
 
@@ -36,7 +49,8 @@ projectRouter.post('/addItem',(req, res, next)=>{
   var project = new Project();
 
   project.addItem(req.body).then((items)=>{
-    res.send(items);
+    console.log('send',items);
+    res.send(req.body);
   }).catch((e)=>{
     console.log('e',e);
     res.status(400).send(e);
