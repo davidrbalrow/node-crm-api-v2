@@ -31,6 +31,7 @@ jQuery('#message-form').on('submit',function(e) {
       editing: true,
       sorting: true,
       paging: true,
+      filtering: true,
       autoload: true,
 
       //data: data1,
@@ -84,5 +85,3 @@ jQuery('#message-form').on('submit',function(e) {
 
 
   });
-
-  

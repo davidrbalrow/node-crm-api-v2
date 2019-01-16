@@ -41,13 +41,27 @@ getAllItems() {
 } //function
 
 filterItem(fields) {
-  console.log('getting items');
+
   return new Promise(function(resolve,reject){
     //  var query1 = `select name,status,bids, budget, to_char(release_dt,'%Y-%m-%d') from crm.projects`
      //var query1 = 'select name,status,bids, budget, release_dt from crm.projects';
+    if (!fields.name) {var name="%"} else {var name = `%${fields.name}%`};
+    if (!fields.status) {var status="%"} else {var status = `%${fields.status}%`};
+    if (!fields.bids) {var bids="%"} else {var bids = `%${fields.bids}%`};
+    if (!fields.budget) {var budget="%"} else {var budget = `%${fields.budget}%`};
+    if (!fields.released_dt) {var released_dt="%"} else {var released_dt = `%${fields.released_dt}%`};
 
-    console.log('fields');
-      db.query('select name,status,bids, budget, release_dt from crm.projects').then(rows=>{
+    var query1 = `select name,status,bids, budget, release_dt from crm.projects where name like '${name}' and status like '${status}'`;
+    console.log(query1);
+    var whereClause={
+      name : name,
+      status : status,
+      bids : bids,
+      budget : budget,
+      released_dt : released_dt
+    };
+
+      db.query(query1).then(rows=>{
         if (!rows){
             console.log('!rows');
           } else {

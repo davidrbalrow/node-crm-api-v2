@@ -28,7 +28,7 @@ projectRouter.get('/all',(req, res, next)=>{
   });
 });
 
-projectRouter.get('/filterItem',(req, res, next)=>{
+projectRouter.post('/filterItem',(req, res, next)=>{
 
   var project = new Project();
 

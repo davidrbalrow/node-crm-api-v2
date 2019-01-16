@@ -15,9 +15,10 @@ $('#projects').click(function(){
 
      controller: {
        loadData: function(filter) {
+         console.log(filter);
        return $.ajax({
-           type: "GET",
-           url: "/project/all",
+           type: "POST",
+           url: "/project/filterItem",
            data: JSON.stringify(filter),
            contentType:"application/json"
        });
