@@ -1,9 +1,10 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
+const port = process.env.PORT || 3000
 //var https = require('https');
 var fs = require('fs');
-var cors = require('cors');
+
 
 
 const {userRouter} = require('./routes/userRouter');
@@ -23,10 +24,6 @@ var allowCrossDomain = function(req, res, next) {
 
 
 var server = http.createServer(app);
-
-var port = 3000;
-
-
 
 
 app.use(express.static(publicPath));
