@@ -1,5 +1,7 @@
 $(document).ready(function(){
 $('#projects').click(function(){
+  $('#Title').replaceWith("<div id=\"Title\" class=\"header\">Projects</div>");
+
   $("#jsGrid").jsGrid({
       width: "100%",
       height: "400px",
@@ -52,7 +54,7 @@ $('#projects').click(function(){
        },
 
       fields: [
-          { name: "name", title: "Name", type: "text", width: 50, validate: "required" },
+          { name: "name", title: "Project", type: "text", width: 50, validate: "required" },
           { name: "status", title:"Status",type: "text", width: 20 },
           { name: "bids", title:"Bids",type: "number", width: 20 },
           { name: "budget", title:"Budget",type: "number", width: 20},
