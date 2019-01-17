@@ -49,7 +49,7 @@ filterItem(fields) {
     if (!fields.status) {var status="%"} else {var status = `%${fields.status}%`};
     if (!fields.bids) {var bids="%"} else {var bids = `%${fields.bids}%`};
     if (!fields.budget) {var budget="%"} else {var budget = `%${fields.budget}%`};
-    if (!fields.released_dt) {var released_dt="%"} else {var released_dt = `%${fields.released_dt}%`};
+    if (!fields.released_dt) {var release_dt="%"} else {var release_dt = `%${fields.release_dt}%`};
 
     var query1 = `select name,status,bids, budget, release_dt from crm.projects where name like '${name}' and status like '${status}'`;
     console.log(query1);
@@ -58,7 +58,7 @@ filterItem(fields) {
       status : status,
       bids : bids,
       budget : budget,
-      released_dt : released_dt
+      release_dt : release_dt
     };
 
       db.query(query1).then(rows=>{
@@ -83,7 +83,13 @@ addItem(fields) {
 
   return new Promise(function(resolve,reject){
 
-      var query1 =`insert INTO crm.projects values ('${fields.name}','${fields.status}', ${fields.bids},${fields.budget},str_to_Date('${fields.release_dt}','%Y-%m-%d'))`;
+    if (!fields.name) {var name=""} else {var name = `${fields.name}`};
+    if (!fields.status) {var status=""} else {var status = `${fields.status}`};
+    if (!fields.bids) {var bids=0} else {var bids = `${fields.bids}`};
+    if (!fields.budget) {var budget=0} else {var budget = `${fields.budget}`};
+    if (!fields.release_dt) {var release_dt="1753-01-01"} else {var release_dt = `${fields.release_dt}`};
+
+      var query1 =`insert INTO crm.projects values ('${name}','${status}', ${bids},${budget},str_to_Date('${release_dt}','%Y-%m-%d'))`;
       console.log(query1);
       db.query(query1).then((rows)=>{
         if (!rows){
@@ -94,12 +100,12 @@ addItem(fields) {
             resolve(rows);
           }
       }).catch((e)=>{
-        console.log('error1',e);
+        //console.log('error1',e);
         reject(e);
       })
 
   }).catch((e)=>{
-console.log('error2',e);
+//console.log('error2',e);
     return(e);
   });
 } //function

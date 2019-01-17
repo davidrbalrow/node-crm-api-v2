@@ -52,7 +52,7 @@ projectRouter.post('/addItem',(req, res, next)=>{
     console.log('send',items);
     res.send(req.body);
   }).catch((e)=>{
-    console.log('e',e);
+    console.log('*********',e);
     res.status(400).send(e);
   });
 
