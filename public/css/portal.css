@@ -20,7 +20,52 @@ html {
   border: 1px solid green;
 }
 
+/***************
+login
+***************/
+.button {
+  background-color: #0984e3;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+/*  margin: 4px 2px;*/
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 16px;
+}
 
+.form-field {
+  max-width: 1140px;
+  margin: 0 auto;
+  width: 50%;
+  /*border: 3px solid green;*/
+  padding: 10px;
+  font-size: : 16px;
+  text-align: center;
+}
+
+
+.centered-form__form{
+  max-width: 1140px;
+  margin: auto;
+
+}
+
+.pw-text{
+  width: 200px;
+  height: 30px;
+  font-size: 16px;
+}
+
+.signin-text{
+  width: 200px;
+  height: 30px;
+  font-size: 16px;
+}
 
 
 /*body {

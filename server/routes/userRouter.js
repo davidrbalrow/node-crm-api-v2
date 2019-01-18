@@ -35,10 +35,45 @@ userRouter.post('/signup',(req, res, next)=>{
 
 })
 
+userRouter.post('/login', (req,res)=>{
+  var body = _.pick(req.body, ['username','password']);
+  var user = new User();
+  
+  console.log('login - ', body);
+
+  user.findByCredentials(body.username,body.password).then((username)=>{
+    return user.generateAuthToken(username).then((token)=>{
+      console.log('in return',token);
+        res.header('x-auth',token).send(user);
+    });
+
+
+  }).catch((e)=>{
+    console.log('routecatch');
+    res.status(400).send(e);
+  });
+
+
+
+});
 
 
 userRouter.get('/me',authenticate,(req,res)=>{
   res.send(req.user);
+});
+
+userRouter.delete('/me/token',authenticate,(req,res)=>{
+  console.log('delete route',req.token);
+  console.log(req.token);
+  console.log(req.username);
+  var user = new User();
+  user.removeToken(req.username,req.token).then(() =>{
+      res.status(200).send();
+    }).catch((e) =>{
+      console.log('400',e);
+      res.status(400).send(e);
+  });
+
 });
 
 // userRouter.get('/me',authenticate,(req,res)=>{

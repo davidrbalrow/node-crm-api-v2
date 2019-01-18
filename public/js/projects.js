@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+var xauthHeader=localStorage.getItem('x-auth');
+console.log('project',xauthHeader);
 $('#projects').click(function(){
   $('#Title').replaceWith("<div id=\"Title\" class=\"header\">Projects</div>");
 
@@ -22,7 +25,8 @@ $('#projects').click(function(){
            type: "POST",
            url: "/project/filterItem",
            data: JSON.stringify(filter),
-           contentType:"application/json"
+           contentType:"application/json",
+           headers:{"x-auth":xauthHeader}
        });
 
      },
@@ -31,7 +35,8 @@ $('#projects').click(function(){
                  type: "POST",
                  url: "http://localhost:3000/project/addItem/",
                  data: JSON.stringify(item),
-                 contentType:"application/json"
+                 contentType:"application/json",
+                 headers:{"x-auth":xauthHeader}
              });
          },
       updateItem: function(item) {
@@ -39,7 +44,8 @@ $('#projects').click(function(){
                      type: 'PUT',
                      url: 'http://localhost:3000/project/updateItem/',
                      data: JSON.stringify(item),
-                     contentType:"application/json"
+                     contentType:"application/json",
+                     headers:{"x-auth":xauthHeader}
                  });
              },
       deleteItem: function(item) {
@@ -47,7 +53,8 @@ $('#projects').click(function(){
                  type: "DELETE",
                  url: "/project/deleteItem",
                  data: JSON.stringify(item),
-                 contentType:"application/json"
+                 contentType:"application/json",
+                 headers:{"x-auth":xauthHeader}
              });
          }
 

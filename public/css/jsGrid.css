@@ -1,0 +1,11 @@
+.jsgrid-alt-row>.jsgrid-cell {
+  background-color: #F0F0F0;
+}
+
+body {
+  font-size: .9em;
+}
+
+.jsgrid-edit-row>.jsgrid-cell {
+    font-size: .9em;
+}

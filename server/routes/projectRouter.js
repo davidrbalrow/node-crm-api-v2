@@ -1,7 +1,9 @@
 const express = require('express');
 const projectRouter = express.Router();
 const _ = require('lodash');
+const path = require('path');
 //var cors = require('cors');
+var {authenticate} = require('../middleware/authenticate');
 
 const {Project} = require('../models/project');
 
@@ -15,7 +17,7 @@ projectRouter.use(function(req, res, next) {
   next();
 });
 
-projectRouter.get('/all',(req, res, next)=>{
+projectRouter.get('/all',authenticate,(req, res, next)=>{
 
   var project = new Project();
 
@@ -28,7 +30,7 @@ projectRouter.get('/all',(req, res, next)=>{
   });
 });
 
-projectRouter.post('/filterItem',(req, res, next)=>{
+projectRouter.post('/filterItem',authenticate,(req, res, next)=>{
 
   var project = new Project();
 
@@ -84,5 +86,12 @@ projectRouter.delete('/deleteItem',(req, res, next)=>{
 
 
 });
+
+projectRouter.get('/portal', authenticate, (req,res,next)=>{
+  //res.sendFile(path.join(__dirname,'/../../public/portal.html'));
+  res.redirect('/../../portal.html');
+//res.redirect('www.google.com');
+});
+
 
 module.exports = {projectRouter};

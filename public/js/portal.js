@@ -1,7 +1,10 @@
 
-// $(function() {
+var storedToken = localStorage.getItem('x-auth');
+console.log('stored',storedToken);
+if (!storedToken){
+window.location.replace('/login.html');
+}
 
- // }); //function
 
 
 jQuery('#message-form').on('submit',function(e) {

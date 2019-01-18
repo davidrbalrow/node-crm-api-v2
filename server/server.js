@@ -28,6 +28,12 @@ var server = http.createServer(app);
 
 app.use(express.static(publicPath));
 
+
+// app.get('/',(req,res)=>{
+//   res.sendFile('login.html', { root: publicPath } );
+// });
+
+
 app.use(bodyParser.json());
 
 app.use(function(req,res,next){
