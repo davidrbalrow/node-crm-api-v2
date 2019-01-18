@@ -58,7 +58,7 @@ generateAuthToken(username){
 return new Promise(function(resolve,reject){
   var access = 'auth';
   var token = jwt.sign({username, access}, 'abc123');
-  var query1=`INSERT INTO crm.token values ('${username}', '${token}')`;
+  var query1=`INSERT INTO crm.token values ('${username}', '${token}') ON DUPLICATE KEY UPDATE token='${token}'`;
   console.log(query1);
   database.query(query1).then(rows=>{
 

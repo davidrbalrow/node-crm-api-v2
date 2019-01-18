@@ -35,7 +35,7 @@ projectRouter.post('/filterItem',authenticate,(req, res, next)=>{
   var project = new Project();
 
   project.filterItem(req.body).then((items)=>{
-  //  console.log(items[0]);
+    
     res.send(items);
   }).catch((e)=>{
     console.log('e',e);
@@ -46,7 +46,7 @@ projectRouter.post('/filterItem',authenticate,(req, res, next)=>{
 
 });
 
-projectRouter.post('/addItem',(req, res, next)=>{
+projectRouter.post('/addItem',authenticate,(req, res, next)=>{
 
   var project = new Project();
 
@@ -60,7 +60,7 @@ projectRouter.post('/addItem',(req, res, next)=>{
 
 });
 
-projectRouter.put('/updateItem',(req, res, next)=>{
+projectRouter.put('/updateItem',authenticate,(req, res, next)=>{
 
   var project = new Project();
   project.updateItem(req.body).then((items)=>{
@@ -74,7 +74,7 @@ projectRouter.put('/updateItem',(req, res, next)=>{
 
 });
 
-projectRouter.delete('/deleteItem',(req, res, next)=>{
+projectRouter.delete('/deleteItem',authenticate,(req, res, next)=>{
 
   var project = new Project();
   project.deleteItem(req.body).then((items)=>{
