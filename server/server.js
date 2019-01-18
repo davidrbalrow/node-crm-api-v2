@@ -9,6 +9,7 @@ var fs = require('fs');
 
 const {userRouter} = require('./routes/userRouter');
 const {projectRouter} = require('./routes/projectRouter');
+const {contactRouter} = require('./routes/contactRouter');
 const bodyParser = require('body-parser');
 
 const publicPath = path.join(__dirname,'/../public');
@@ -46,6 +47,7 @@ app.use(function(req,res,next){
 
 app.use('/project', projectRouter);
 app.use('/user', userRouter);
+app.use('/contact', contactRouter);
 
 
 app.listen(port, () => {
